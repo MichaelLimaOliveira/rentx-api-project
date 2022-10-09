@@ -18,9 +18,7 @@ export class SpecificationsRepository implements ISpecificationsRepository {
       name,
       description,
     });
-    console.log("chegou antes do save");
-    const teste = await this.repository.save(specification);
-    console.log(teste);
+    await this.repository.save(specification);
   }
 
   async list(): Promise<Specification[]> {

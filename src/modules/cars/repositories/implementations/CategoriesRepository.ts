@@ -20,7 +20,6 @@ export class CategoriesRepository implements ICategoriesRepository {
     });
 
     await this.repository.save(category);
-    console.log("passou do save");
   }
 
   async list(): Promise<Category[]> {
