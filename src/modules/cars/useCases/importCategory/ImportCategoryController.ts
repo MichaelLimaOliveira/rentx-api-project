@@ -6,13 +6,9 @@ import { ImportCategoryUseCase } from "./ImportCategoryUseCase";
 export class ImportCategoryController {
   async handle(req: Request, res: Response): Promise<Response> {
     const { file } = req;
-    try {
-      const importCategoryUseCase = container.resolve(ImportCategoryUseCase);
-      await importCategoryUseCase.execute(file);
-    } catch (error) {
-      return res.status(400).json({ error: error.message });
-    }
+    const importCategoryUseCase = container.resolve(ImportCategoryUseCase);
+    await importCategoryUseCase.execute(file);
 
-    return res.send();
+    return res.status(201).send();
   }
 }
