@@ -39,7 +39,7 @@
           "201": {
             "description": "Created"
           },
-          "500": {
+          "404": {
             "description": "Category already exists"
           }
         }
@@ -104,7 +104,7 @@
           "201": {
             "description": "Created"
           },
-          "500": {
+          "404": {
             "description": "Specification already exists"
           }
         }
