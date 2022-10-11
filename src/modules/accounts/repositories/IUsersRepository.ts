@@ -1,12 +1,8 @@
-export interface ICreateUsersDTO {
-  name: string;
-  username: string;
-  passaword: string;
-  email: string;
-  driver_license: string;
-  avatar?: string;
-}
+import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
+import { User } from "../entities/user";
 
 export interface IUsersRepository {
-  create(data: ICreateUsersDTO): Promise<void>;
+  create(data: ICreateUserDTO): Promise<void>;
+  findByEmail(email: string): Promise<User>;
+  findById(user_id: string): Promise<User>;
 }

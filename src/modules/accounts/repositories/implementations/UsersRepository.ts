@@ -1,7 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 
+import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { User } from "../../entities/user";
-import { ICreateUsersDTO, IUsersRepository } from "../IUsersRepository";
+import { IUsersRepository } from "../IUsersRepository";
 
 export class UserRepository implements IUsersRepository {
   private repository: Repository<User>;
@@ -10,7 +11,33 @@ export class UserRepository implements IUsersRepository {
     this.repository = getRepository(User);
   }
 
-  async create(data: ICreateUsersDTO): Promise<void> {
-    throw new Error("Method not implemented.");
+  async create({
+    name,
+    password,
+    email,
+    driver_license,
+    avatar = "",
+  }: ICreateUserDTO): Promise<void> {
+    const user = this.repository.create({
+      name,
+      password,
+      email,
+      driver_license,
+      avatar,
+    });
+
+    await this.repository.save(user);
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.repository.findOne({ email });
+
+    return user;
+  }
+
+  async findById(id: string): Promise<User> {
+    const user = await this.repository.findOne(id);
+
+    return user;
   }
 }
