@@ -124,6 +124,9 @@
           },
           "400": {
             "description": "Specification already exists"
+          },
+          "401": {
+            "description": "Token"
           }
         }
       },

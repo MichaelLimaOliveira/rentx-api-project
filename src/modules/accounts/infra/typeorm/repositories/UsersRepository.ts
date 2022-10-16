@@ -1,8 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { User } from "../../entities/user";
-import { IUsersRepository } from "../IUsersRepository";
+import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+import { User } from "@modules/accounts/infra/typeorm/entities/user";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 
 export class UserRepository implements IUsersRepository {
   private repository: Repository<User>;
@@ -16,7 +16,8 @@ export class UserRepository implements IUsersRepository {
     password,
     email,
     driver_license,
-    avatar = "",
+    avatar,
+    id,
   }: ICreateUserDTO): Promise<void> {
     const user = this.repository.create({
       name,
@@ -24,6 +25,7 @@ export class UserRepository implements IUsersRepository {
       email,
       driver_license,
       avatar,
+      id,
     });
 
     await this.repository.save(user);

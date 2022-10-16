@@ -15,22 +15,16 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint",
-    "eslint-plugin-import-helpers",
-    "prettier"
-  ],
+  "plugins": ["@typescript-eslint", "prettier", "eslint-plugin-import-helpers"],
   "rules": {
-    "prettier/prettier": "error",
     "camelcase": "off",
+    "prettier/prettier": "error",
     "import/no-unresolved": "error",
     "@typescript-eslint/naming-convention": [
       "error",
       {
         "selector": "interface",
-        "format": [
-          "PascalCase"
-        ],
+        "format": ["PascalCase"],
         "custom": {
           "regex": "^I[A-Z]",
           "match": true
@@ -55,51 +49,20 @@
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": [
-          "module",
-          "/^@shared/",
-          [
-            "parent",
-            "sibling",
-            "index"
-          ]
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "ignoreCase": true
-        }
+        "groups": ["module", "/^@/", ["parent", "sibling", "index"]],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ],
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
-          "**/*.spec.js"
-        ]
+        "devDependencies": ["**/*.spec.ts", "jest.config.ts"]
       }
     ]
   },
-  "overrides": [
-    {
-      "files": [ "**/*Repository.ts" ],
-      "rules": {
-        "no-use-before-define": "off"
-      }
-    }
-  ],
   "settings": {
     "import/resolver": {
-      "node": {
-        "paths": [
-          "src"
-        ],
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ]
-      }
+      "typescript": {}
     }
   }
 }

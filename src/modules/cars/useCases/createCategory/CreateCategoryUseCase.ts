@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@shared/errors/AppError";
+
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
 interface ICategoryRequest {
@@ -11,7 +12,7 @@ interface ICategoryRequest {
 @injectable()
 export class CreateCategoryUseCase {
   constructor(
-    @inject("CategoriesRepository")
+    @inject("ICategoriesRepository")
     private categoriesRepository: ICategoriesRepository
   ) {}
   async execute({ name, description }: ICategoryRequest): Promise<void> {
