@@ -29,7 +29,11 @@ export class CategoriesRepository implements ICategoriesRepository {
 
   async findByName(name: string): Promise<Category> {
     // SELECT * FROM categories WHERE name = "name" limit 1
-    const category = await this.repository.findOne({ name });
+    const category = await this.repository.findOne({
+      where: {
+        name,
+      },
+    });
 
     return category;
   }

@@ -11,7 +11,7 @@ describe("List Cars", () => {
     listCarsUseCase = new ListAvailableCarsUseCase(carRepositoryInMemory);
   });
 
-  it("Shold be able to list all available cars", async () => {
+  it("Should be able to list all available cars", async () => {
     const car = await carRepositoryInMemory.create({
       name: "Frde",
       description: "description",
@@ -26,7 +26,7 @@ describe("List Cars", () => {
     expect(listCars).toEqual([car]);
   });
 
-  it("Shold be able to list all available cars by name", async () => {
+  it("Should be able to list all available cars by name", async () => {
     const car = await carRepositoryInMemory.create({
       name: "Frde2",
       description: "description2",

@@ -1,7 +1,7 @@
 import { Specification } from "@modules/cars/infra/typeorm/entities/specification";
 
 import {
-  ICreateSpecificatioDTO,
+  ICreateSpecificationDTO,
   ISpecificationsRepository,
 } from "../ISpecificationsRepository";
 
@@ -13,7 +13,7 @@ export class SpecificationsRepositoryInMemory
   async create({
     name,
     description,
-  }: ICreateSpecificatioDTO): Promise<Specification> {
+  }: ICreateSpecificationDTO): Promise<Specification> {
     const specification = new Specification();
     Object.assign(specification, {
       name,

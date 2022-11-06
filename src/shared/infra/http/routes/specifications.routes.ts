@@ -18,4 +18,8 @@ specificationsRoutes.post(
   createSpecificationController.handle
 );
 
-specificationsRoutes.get("/", listSpecificationController.handle);
+specificationsRoutes.get(
+  "/",
+  ensureAuthenticated,
+  listSpecificationController.handle
+);
