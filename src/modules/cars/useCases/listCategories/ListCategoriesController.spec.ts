@@ -38,8 +38,8 @@ describe("Create Category Controller", () => {
     await request(app)
       .post("/categories")
       .send({
-        name: "Category Supertest",
-        description: "Category Supertest",
+        name: "Category Supertest1",
+        description: "Category Supertest1",
       })
       .set({
         Authorization: `Bearer${refresh_token}`,
